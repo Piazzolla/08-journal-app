@@ -1,8 +1,15 @@
+import { BrowserRouter } from "react-router-dom"
+import { AppRouter } from "./router/AppRouter"
+import { AppTheme } from "./theme"
 
 export const JournalApp = () => {
     return (
         <>
-            <h1>Hola Mundo</h1>
+            <BrowserRouter>
+                <AppTheme>
+                    <AppRouter />
+                </AppTheme>
+            </BrowserRouter>
         </>
     )
 }
