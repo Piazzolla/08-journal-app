@@ -33,12 +33,11 @@ export const useForm = ( initialForm = {}, formValidations = {} ) => {
         const formCheckedValues = {};
         for (const formField of Object.keys( formValidations )) {
        //     console.log(formField);
-            const [ fn, errorMesage = 'Este campo es requerido' ] = formValidations[ formField ];
-            formCheckedValues[`${ formField }Valid`] = fn( formState[formField]) ? null: errorMesage;
+            const [ fn, errorMessage = 'Este campo es requerido' ] = formValidations[ formField ];
+            formCheckedValues[`${ formField }Valid`] = fn( formState[formField]) ? null: errorMessage;
         }
 
         setFormValidation( formCheckedValues );
-        console.log( formCheckedValues );
 
     }
 

@@ -1,48 +1,54 @@
 import { TurnedInNot } from "@mui/icons-material"
 import { Divider, Drawer, Grid, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from "@mui/material"
 import { Box } from "@mui/system"
+import { useSelector } from "react-redux"
 
 export const Sidebar = ({ drawerWidth = 240 }) => {
-  return (
-    <Box component='nav'
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 }}}
-    >
-        <Drawer variant='permanent'
-            open={ true }
-            sx={{ display: { xs: 'block '}, 
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', 
-            width: drawerWidth}
-        
-        }}
+
+    const { displayName } = useSelector(state => state.auth);
+    return (
+        <Box component='nav'
+            sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         >
-            <Toolbar>
-                <Typography variant='h6' noWrap component='div'>
-                    Fernando Herrera
-                </Typography>
-            </Toolbar>
-            <Divider />
+            <Drawer variant='permanent'
+                open={true}
+                sx={{
+                    display: { xs: 'block ' },
+                    '& .MuiDrawer-paper': {
+                        boxSizing: 'border-box',
+                        width: drawerWidth
+                    }
 
-            <List>
-                {
-                    ['Enero', 'Febrero','Marzo','Abril'].map(text => (
-                        <ListItem key={ text } disablePadding>
-                            <ListItemButton>
-                                <ListItemIcon>
-                                    <TurnedInNot />
-                                </ListItemIcon>
-                                <Grid container>
-                                    <ListItemText primary={text} />
-                                    <ListItemText secondary={' Veniam qui in excepteur minim ea esse ea.'} />
+                }}
+            >
+                <Toolbar>
+                    <Typography variant='h6' noWrap component='div'>
+                        {displayName}
+                    </Typography>
+                </Toolbar>
+                <Divider />
 
-                                </Grid>
-                            </ListItemButton>
-                        </ListItem>
-                    ))
-                }
-            </List>
+                <List>
+                    {
+                        ['Enero', 'Febrero', 'Marzo', 'Abril'].map(text => (
+                            <ListItem key={text} disablePadding>
+                                <ListItemButton>
+                                    <ListItemIcon>
+                                        <TurnedInNot />
+                                    </ListItemIcon>
+                                    <Grid container>
+                                        <ListItemText primary={text} />
+                                        <ListItemText secondary={' Veniam qui in excepteur minim ea esse ea.'} />
 
-        </Drawer>
+                                    </Grid>
+                                </ListItemButton>
+                            </ListItem>
+                        ))
+                    }
+                </List>
 
-    </Box>
-  )
+            </Drawer>
+
+        </Box>
+    )
 }
