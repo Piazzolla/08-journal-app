@@ -1,6 +1,6 @@
-import { TurnedInNot } from "@mui/icons-material"
-import { Divider, Drawer, Grid, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from "@mui/material"
+import { Divider, Drawer, List,  Toolbar, Typography } from "@mui/material"
 import { Box } from "@mui/system"
+import { useEffect } from "react"
 import { useSelector } from "react-redux"
 import { SidebarItem } from "./SidebarItem"
 
@@ -8,6 +8,13 @@ export const Sidebar = ({ drawerWidth = 240 }) => {
 
     const { displayName } = useSelector(state => state.auth);
     const { notes } = useSelector(state => state.journal);
+
+    useEffect(() => {
+
+    console.log('hola');
+    }, [notes])
+    
+
     return (
         <Box component='nav'
             sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}

@@ -41,9 +41,28 @@ export const journalSlice = createSlice({
             state.messageSaved = `${ action.payload.title }, actualizada correctamente`;
             /* no dispardo el sweetalert aca porque los reducers no deben correr librerias de terceros */
         },
-        deleteNoteById: (state, action) => { },
+        setPhotosToActiveNote: ( state, action ) => {
+            state.active.imageUrls = [ ...state.active.imageUrls, ...action.payload ];
+            state.isSaving = false;
+        },
+        deleteNoteById: (state, action) => {
+            //volar la nota del store y hacer que no aparezca mas en la sidebar
+            state.active = null;
+            state.notes = state.notes.filter( note => {
+                if( note.id !== action.payload ) return note;
+            })
+
+
+
+         },
         savingNewNote: (state, action) => {
             state.isSaving = true
+        },
+        clearNotesLogout: (state) => {
+            state.isSaving = false;
+            state.messageSaved = '';
+            state.notes = [];
+            state.active = null;
         },
     }
 });
@@ -52,10 +71,12 @@ export const journalSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const {
     addNewEmptyNote,
+    clearNotesLogout,
+    deleteNoteById,
+    savingNewNote,
     setActiveNote,
     setNotes,
+    setPhotosToActiveNote,
     setSaving,
     updatedNote,
-    deleteNoteById,
-    savingNewNote
 } = journalSlice.actions;
