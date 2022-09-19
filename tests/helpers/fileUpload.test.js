@@ -23,7 +23,7 @@ describe('Pruebas en fileUpload', () => {
 
         // xofmjwjvagxugulinh7t.jpg
 
-        console.log('hola');
+        //console.log('hola');
         const segments = url.split('/');
         const imageId = segments[ segments.length - 1].replace('.jpg', '');
         const cloudResp = await cloudinary.api.delete_resources(['journal/' + imageId], {

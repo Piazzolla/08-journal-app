@@ -32,6 +32,7 @@
     "@vitejs/plugin-react": "^2.1.0",
     "babel-jest": "^29.0.3",
     "cloudinary": "^1.32.0",
+    "dotenv": "^16.0.2",
     "jest": "^29.0.3",
     "jest-environment-jsdom": "^29.0.3",
     "setimmediate": "^1.0.5",

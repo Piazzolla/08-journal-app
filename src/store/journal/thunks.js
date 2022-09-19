@@ -22,14 +22,8 @@ export const startNewNote = () => {
 
         newNote.id = newDoc.id;
 
-
         dispatch( addNewEmptyNote( newNote ));
         dispatch( setActiveNote( newNote ));
-
-        //! dispatch
-        // dispatch( newNote )
-        // dispatch( activeNote )
-
     }
 }
 
@@ -81,10 +75,10 @@ export const startUploadingFiles = ( files = [] ) => {
 
 export const startDeletingNote = () => {
     return async( dispatch, getState) => {
-        const { uid } = getState().auth;
+  /*      const { uid } = getState().auth;
         const { active:activeNote } = getState().journal;
         const docRef = doc( FirebaseDB, `${ uid }/journal/notes/${ activeNote.id }`);
         await deleteDoc( docRef );
-        dispatch( deleteNoteById( activeNote.id ));
+        dispatch( deleteNoteById( activeNote.id ));*/
     } 
 }
