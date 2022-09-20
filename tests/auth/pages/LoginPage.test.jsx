@@ -75,7 +75,7 @@ beforeEach( () => jest.clearAllMocks() );
 
      test('submit debe llamar startLoginWithEmailPassword', () => { 
 
-        const email   = 'fernando@google.com';
+        const email    = 'fernando@google.com';
         const password = '123456';
         render(
             <Provider store={store}>
@@ -88,22 +88,22 @@ beforeEach( () => jest.clearAllMocks() );
         const emailField = screen.getByRole('textbox', { name: 'Correo'}); /* agarra el input que tiene 
         label Correo aunque no tiene name Correo. Es algo que hace react testing library cuando 
         genera el html a partir del jsx*/
-        fireEvent.change( emailField, { target: { name: 'email', value:'email' }}); 
+        fireEvent.change( emailField, { target: { name: 'email', value:email }}); 
         
         const passwordField = screen.getByTestId( 'password' ); /* por algun motivo con contrasenia es diferente
         y le tengo que agregar inputProps y agarrarlo con esa prop  */
-        fireEvent.change( emailField, { target: { name: 'password', value:'password' }}); 
+        fireEvent.change( emailField, { target: { name: 'password', value:password }}); 
 
 
-        const loginForm = screen.getByTestId( 'submit-form' );
-        fireEvent.change( loginForm ); 
+        const loginForm = screen.getByLabelText( 'submit-form' );
+        fireEvent.submit( loginForm ); 
 
         expect( mockStartLoginWithEmailPassword).toHaveBeenCalledWith({
             email: email,
             password: password
         });
 
-      })
+      });
 
 
 
